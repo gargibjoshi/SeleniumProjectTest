@@ -11,7 +11,7 @@ public class HTMLParser
     public HtmlDocument htmlDoc = new HtmlDocument();
     public Dictionary<string, List<string>> parsedElements = new Dictionary<string, List<string>>();
     public int elementCount = 0;
-    public string uiUsage, uiElement, uiAction;
+    public string uiUsage ="#region UIUsage\n", uiElement="#region UIElements\n", uiAction="#region Actions\n";
     public HTMLParser()
     {
         //
@@ -20,11 +20,11 @@ public class HTMLParser
     }
     public void Parse(string filePath)
     {
-        htmlDoc.Load(@"TestHTML.html");
+        htmlDoc.Load(filePath);
         StoreAllReqElements("input");
         StoreAllReqElements("select");
-        StoreAllReqElements("button");
-        StoreAllReqElements("a");
+        //StoreAllReqElements("button");
+      //  StoreAllReqElements("a");
         GenerateCode();
 
     }
@@ -32,9 +32,10 @@ public class HTMLParser
     {
         HtmlNode docNode = htmlDoc.DocumentNode;
         HtmlNodeCollection nodes = docNode.SelectNodes("//" + selectElementType + ""); //SelectNodes takes a XPath expression
-        List<string> tempList = new List<string>();
         foreach (HtmlNode node in nodes)
         {
+            List<string> tempList = new List<string>();
+
             tempList.Add(node.GetAttributeValue("id", "NoId"));    // Fetch id of HTML element
             tempList.Add(node.GetAttributeValue("name", "NoName"));  // Fetch parameter name (GET/POST)
             tempList.Add(node.GetAttributeValue("type", "NoType"));  // Fetch type of input element
@@ -65,19 +66,19 @@ public class HTMLParser
         {
             case "text":
 
-                tempUIElement += "[FindsBy(How = How.Id, Using = " + elementId + ")]public IWebElement txt" + elementName + " { get; set; }";
+                tempUIElement += "[FindsBy(How = How.Id, Using = \"" + elementId + "\")]\npublic IWebElement txt_" + elementName + " { get; set; }\n\n";
              
                 break;
             case "radio":
-                tempUIElement += "[FindsBy(How = How.Id, Using = " + elementId + ")]public IWebElement txt" + elementName + " { get; set; }";
+                tempUIElement += "[FindsBy(How = How.Id, Using = \"" + elementId + "\")]\npublic IWebElement rbtn_" + elementName + " { get; set; }\n\n";
 
                 break;
             case "checkbox":
-                tempUIElement += "[FindsBy(How = How.Id, Using = " + elementId + ")]public IWebElement txt" + elementName + " { get; set; }";
+                tempUIElement += "[FindsBy(How = How.Id, Using =\"" + elementId + "\")]\npublic IWebElement chk_" + elementName + " { get; set; }\n\n";
 
                 break;
             case "button":
-                tempUIElement += "[FindsBy(How = How.Id, Using = " + elementId + ")]public IWebElement txt" + elementName + " { get; set; }";
+                tempUIElement += "[FindsBy(How = How.Id, Using = \"" + elementId + "\")]\npublic IWebElement btn_" + elementName + " { get; set; }\n\n";
 
                 break;
         }
