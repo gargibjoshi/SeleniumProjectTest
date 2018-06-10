@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<form id="details" name="User Details">
+    <h2> User Form </h2>
+
+    <table>
+
+        <tbody>
+            <tr>
+                <td>
+                    <label>Title &nbsp;<font color="red">*</font></label>
+                </td>
+                <td>
+                    <span><select data-val="true" data-val-number="The field TitleId must be a number." id="TitleId" name="TitleId"><option value="">Select</option><option value="1">Mr.</option><option value="2">Ms.</option> </select></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="detail_box">
+                        <label>Initial</label>
+                    </div>
+                </td>
+                <td>
+                    <span><input id="Initial" name="Initial" style="width:50px;" type="text" value=""></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="detail_box">
+                        <label>First Name <font color="red">*</font></label>
+                    </div>
+                </td>
+                <td>
+                    <span><input id="txt_Firstname" id="FirstName" name="FirstName" style="width:120px;" type="text" value=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="detail_box">
+                        <label>Middle Name</label>
+                    </div>
+                </td>
+                <td>
+                    <span><input id="txt_Middlename" id="MiddleName" name="MiddleName" style="width:120px;" type="text" value=""></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>
+                        Gender
+                    </span>
+                </td>
+                <td>
+                    <input id="rbtn_male" checked="checked" name="Male" type="radio" value="male">Male &nbsp;<input id="rbtn_Female" name="Female" type="radio" value="female">Female
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>
+                        Languages Known
+                    </span>
+                </td>
+                <td>
+                    <input id="chk_English" checked="checked" name="english" type="checkbox" value="english">English &nbsp;<input id="chk_Hindi" name="Hindi" type="checkbox" value="hindi">Hindi
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input id="btnSave"name="Save" type="button" value="Save">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</form>
